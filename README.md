@@ -20,12 +20,16 @@
 - Add redux devtools in chrome
 - Login and see if your data is coming properly in the store
 - Navbar should update as soon as user logs in
-- Refactor our code to add constants file + create a conponent folder
+- Refactor our code to add constants file + create a component folder
 
 - You should not able to access other routes without login
 - If token is not present, redirect user to login page
 - Logout
-- Profile
+- Get the feed and add the feed in the store
+- build the user card on feed
+- Edit profile feature
+- Show toast message on save of profile
+- See all my connections
 
 Body    
     NavBar
