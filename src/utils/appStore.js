@@ -5,6 +5,7 @@ import { combineReducers } from "redux";
 import userReducer from "./userSlice";
 import feedReducer from "./feedSlice";
 import connectionReducer from "./connectionSlice";
+import requestReducer from "./requestSlice";
 
 // persist config
 const persistConfig = {
@@ -17,6 +18,7 @@ const rootReducer = combineReducers({
   user: userReducer,
   feed: feedReducer,
   connections: connectionReducer,
+  requests: requestReducer,
 });
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);
