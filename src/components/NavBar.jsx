@@ -4,11 +4,14 @@ import { BASE_URL } from "../utils/constants";
 import axios from "axios";
 import { removeUser } from "../utils/userSlice";
 import { removeFeed } from "../utils/feedSlice";
+import { useState, useRef, useEffect } from "react";
 
 const NavBar = () => {
   const user = useSelector((store) => store.user);
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const dropdownRef = useRef(null);
 
   const handleLogout = async () => {
     try {
@@ -27,46 +30,85 @@ const NavBar = () => {
     }
   };
 
+  // Close dropdown on click outside
+  useEffect(() => {
+    function handleClickOutside(event) {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+        setIsDropdownOpen(false);
+      }
+    }
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
+
+  // Close dropdown on navigation
+  const handleDropdownSelect = (callback) => {
+    setIsDropdownOpen(false);
+    if (callback) callback();
+  };
+
   return (
-    <div className="navbar bg-base-300">
+    <div className="navbar bg-neutral bg-opacity-90 backdrop-blur shadow-xl border-b border-base-200 text-neutral-content sticky top-0 z-50">
       <div className="flex-1">
-        <Link to="/" className="btn btn-ghost text-xl">
-          👩‍💻 DevTinder
+        <Link to="/" className="btn btn-ghost text-xl font-bold tracking-wide">
+          <span role="img" aria-label="logo">
+            👩‍💻
+          </span>{" "}
+          DevTinder
         </Link>
       </div>
       {user && (
         <div className="flex gap-3 items-center">
-          <p>Welcome, {user.firstName}</p>
-          <div className="dropdown dropdown-end mr-6">
-            <div
+          <p className="font-semibold text-neutral-content/80">
+            Welcome, {user.firstName}
+          </p>
+          <div className="relative" ref={dropdownRef}>
+            <button
               tabIndex={0}
-              role="button"
-              className="btn btn-ghost btn-circle avatar"
+              className="btn btn-ghost btn-circle avatar border border-primary shadow"
+              onClick={() => setIsDropdownOpen((open) => !open)}
             >
-              <div className="w-10 rounded-full">
+              <div className="w-10 rounded-full overflow-hidden">
                 <img alt="user photo" src={user?.photoUrl} />
               </div>
-            </div>
-            <ul
-              tabIndex={0}
-              className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow"
-            >
-              <li>
-                <Link to="/profile" className="justify-between">
-                  Profile
-                  <span className="badge">New</span>
-                </Link>
-              </li>
-              <li>
-                <Link to="/connections">Connections</Link>
-              </li>
-              <li>
-                <Link to="/requests">Requests</Link>
-              </li>
-              <li onClick={handleLogout}>
-                <a>Logout</a>
-              </li>
-            </ul>
+            </button>
+            {isDropdownOpen && (
+              <ul className="menu menu-sm dropdown-content bg-neutral text-neutral-content border border-base-200 rounded-box shadow-xl z-50 mt-3 w-52 p-2 absolute right-0">
+                <li>
+                  <Link
+                    to="/profile"
+                    className="justify-between"
+                    onClick={() => handleDropdownSelect()}
+                  >
+                    Profile <span className="badge badge-primary">New</span>
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    to="/connections"
+                    onClick={() => handleDropdownSelect()}
+                  >
+                    Connections
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/requests" onClick={() => handleDropdownSelect()}>
+                    Requests
+                  </Link>
+                </li>
+                <li>
+                  <a
+                    onClick={() => {
+                      handleDropdownSelect(handleLogout);
+                    }}
+                  >
+                    Logout
+                  </a>
+                </li>
+              </ul>
+            )}
           </div>
         </div>
       )}

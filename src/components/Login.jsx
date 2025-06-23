@@ -57,71 +57,69 @@ const Login = () => {
   };
 
   return (
-    <div className="flex justify-center my-20">
-      <div className="card card-border bg-base-300 w-96 rounded-2xl shadow-sm">
+    <div className="flex justify-center min-h-screen overflow-y-auto bg-gradient-to-br from-base-200 to-base-100 py-8">
+      <div className="card card-bordered bg-neutral border border-base-200 shadow-2xl rounded-xl w-96 my-auto">
         <div className="card-body">
-          <h2 className="card-title justify-center">
+          <h2 className="card-title justify-center text-2xl font-bold mb-2 text-neutral-content">
             {isLoginForm ? "Login" : "Sign Up"}
           </h2>
           {!isLoginForm && (
             <>
-              <fieldset className="fieldset">
+              <fieldset className="fieldset mb-2">
                 <legend className="fieldset-legend">First Name</legend>
                 <input
                   value={firstName}
                   type="text"
-                  className="input"
+                  className="input input-bordered input-primary w-full"
                   placeholder="Enter first name"
                   onChange={(e) => setFirstName(e.target.value)}
                 />
               </fieldset>
-
-              <fieldset className="fieldset">
+              <fieldset className="fieldset mb-2">
                 <legend className="fieldset-legend">Last Name</legend>
                 <input
                   value={lastName}
                   type="text"
-                  className="input"
+                  className="input input-bordered input-primary w-full"
                   placeholder="Enter last name"
                   onChange={(e) => setLastName(e.target.value)}
                 />
               </fieldset>
             </>
           )}
-          <fieldset className="fieldset">
+          <fieldset className="fieldset mb-2">
             <legend className="fieldset-legend">Email ID</legend>
             <input
               value={emailId}
               type="text"
-              className="input"
+              className="input input-bordered input-primary w-full"
               placeholder="enter emailId id"
               onChange={(e) => setEmailId(e.target.value)}
             />
           </fieldset>
-
-          <fieldset className="fieldset">
+          <fieldset className="fieldset mb-2">
             <legend className="fieldset-legend">Password</legend>
             <input
               value={password}
               type="password"
-              className="input"
+              className="input input-bordered input-primary w-full"
               placeholder="enter password"
               onChange={(e) => setPassword(e.target.value)}
             />
           </fieldset>
           <div>
-            <p className="text-xs text-red-500">{error}</p>
+            <p className="text-xs text-red-500 min-h-[1.5em]">{error}</p>
           </div>
-          <div className="card-actions flex justify-center">
+          <div className="card-actions flex justify-center mt-2">
             <button
-              className="btn btn-primary px-6 my-5 "
+              className="btn btn-primary px-6 my-5 w-full"
               onClick={isLoginForm ? handleLogin : handleSignup}
             >
               {isLoginForm ? "Login" : "Signup"}
             </button>
           </div>
           <p
-            className="text-gray-300 cursor-pointer text-center py-2"
+            className="text-primary cursor-pointer text-center py-2 hover:underline select-none"
             onClick={() => setIsLoginForm((value) => !value)}
           >
             {isLoginForm ? "New User? Signup her" : "Existing User? Login Here"}

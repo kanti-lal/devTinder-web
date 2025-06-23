@@ -32,10 +32,19 @@ const Body = () => {
   }, []);
 
   return (
-    <div>
-      <NavBar />
-      <Outlet />
-      <Footer />
+    <div className="min-h-screen flex flex-col bg-base-100">
+      {/* Fixed NavBar */}
+      <div className="sticky top-0 z-50">
+        <NavBar />
+      </div>
+      {/* Scrollable main content */}
+      <main className="flex-1 overflow-y-auto pt-2 pb-8">
+        <Outlet />
+      </main>
+      {/* Fixed Footer */}
+      <div className="sticky bottom-0 z-50">
+        <Footer />
+      </div>
     </div>
   );
 };
