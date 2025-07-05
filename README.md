@@ -94,3 +94,26 @@ location /api/ {
         proxy_cache_bypass $http_upgrade;
     }
 
+
+
+# Adding a custom Domain Name
+
+    - purchased domain name with any provider
+    - signUp on cloudflare
+    - change nameservers on provider and point it to cloudflare
+    - wait for some time till your nameservers are updated
+    - DNS record : A record in 
+    - Enable SSL or website
+
+# Sending Email via SES
+    - Create IAM User
+    - give access to amazonSESFullAccess
+    - Amazon ses, Create identity 
+    - verify domain name & email
+    - Install AWS SDK v3
+    - Code example https://github.com/awsdocs/aws-doc-sdk-examples/tree/main/javascriptv3/example_code/ses#code-examples
+    - Setup SesClient
+    - Access Credentials should be created in IAM under securityCredentials Tabs
+    - Write code for SESClient
+    - Write code for sending email address
+    - Make the email dynamic by passing more params to the run application
