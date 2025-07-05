@@ -57,7 +57,7 @@ const Login = () => {
   };
 
   return (
-    <div className="flex justify-center min-h-screen overflow-y-auto bg-gradient-to-br from-base-200 to-base-100 py-8">
+    <div className="flex justify-center items-center h-full bg-gradient-to-br from-base-200 to-base-100">
       <div className="card card-bordered bg-neutral border border-base-200 shadow-2xl rounded-xl w-96 my-auto">
         <div className="card-body">
           <h2 className="card-title justify-center text-2xl font-bold mb-2 text-neutral-content">
