@@ -13,7 +13,6 @@ const Requests = () => {
       const res = await axios.get(BASE_URL + "/user/requests/received", {
         withCredentials: true,
       });
-      console.log("🚀 ~ fetchRequest ~ res:", res?.data?.data);
 
       dispatch(addRequests(res?.data?.data));
     } catch (error) {
@@ -37,7 +36,6 @@ const Requests = () => {
         { withCredentials: true }
       );
       dispatch(removeRequest(_id));
-      console.log("🚀 ~ reviewRequest ~ res:", res);
     } catch (error) {
       console.error(error);
     }

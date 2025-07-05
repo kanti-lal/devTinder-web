@@ -43,26 +43,48 @@ const EditProfile = ({ user }) => {
               <h2 className="card-title justify-center text-2xl font-bold mb-2 text-neutral-content">
                 Edit Profile
               </h2>
-              <fieldset className="fieldset mb-2">
-                <legend className="fieldset-legend">First Name</legend>
-                <input
-                  value={firstName}
-                  type="text"
-                  className="input input-bordered input-primary w-full"
-                  placeholder="enter first name"
-                  onChange={(e) => setFirstName(e.target.value)}
-                />
-              </fieldset>
-              <fieldset className="fieldset mb-2">
-                <legend className="fieldset-legend">LastName</legend>
-                <input
-                  value={lastName}
-                  type="text"
-                  className="input input-bordered input-primary w-full"
-                  placeholder="enter lastname"
-                  onChange={(e) => setLastName(e.target.value)}
-                />
-              </fieldset>
+              <div className="grid grid-cols-2 gap-4">
+                <fieldset className="fieldset">
+                  <legend className="fieldset-legend">First Name</legend>
+                  <input
+                    value={firstName}
+                    type="text"
+                    className="input input-bordered input-primary w-full"
+                    placeholder="enter first name"
+                    onChange={(e) => setFirstName(e.target.value)}
+                  />
+                </fieldset>
+                <fieldset className="fieldset">
+                  <legend className="fieldset-legend">LastName</legend>
+                  <input
+                    value={lastName}
+                    type="text"
+                    className="input input-bordered input-primary w-full"
+                    placeholder="enter lastname"
+                    onChange={(e) => setLastName(e.target.value)}
+                  />
+                </fieldset>
+                <fieldset className="fieldset">
+                  <legend className="fieldset-legend">Age</legend>
+                  <input
+                    value={age}
+                    type="text"
+                    className="input input-bordered input-primary w-full"
+                    placeholder="age "
+                    onChange={(e) => setAge(e.target.value)}
+                  />
+                </fieldset>
+                <fieldset className="fieldset">
+                  <legend className="fieldset-legend">Gender</legend>
+                  <input
+                    value={gender}
+                    type="text"
+                    className="input input-bordered input-primary w-full"
+                    placeholder="gender "
+                    onChange={(e) => setGender(e.target.value)}
+                  />
+                </fieldset>
+              </div>
               <fieldset className="fieldset mb-2">
                 <legend className="fieldset-legend">Photo Url</legend>
                 <input
@@ -74,16 +96,6 @@ const EditProfile = ({ user }) => {
                 />
               </fieldset>
               <fieldset className="fieldset mb-2">
-                <legend className="fieldset-legend">Age</legend>
-                <input
-                  value={age}
-                  type="text"
-                  className="input input-bordered input-primary w-full"
-                  placeholder="age "
-                  onChange={(e) => setAge(e.target.value)}
-                />
-              </fieldset>
-              <fieldset className="fieldset mb-2">
                 <legend className="fieldset-legend">About</legend>
                 <input
                   value={about}
@@ -91,16 +103,6 @@ const EditProfile = ({ user }) => {
                   className="input input-bordered input-primary w-full"
                   placeholder="about "
                   onChange={(e) => setAbout(e.target.value)}
-                />
-              </fieldset>
-              <fieldset className="fieldset mb-2">
-                <legend className="fieldset-legend">Gender</legend>
-                <input
-                  value={gender}
-                  type="text"
-                  className="input input-bordered input-primary w-full"
-                  placeholder="gender "
-                  onChange={(e) => setGender(e.target.value)}
                 />
               </fieldset>
               <div>
@@ -120,11 +122,12 @@ const EditProfile = ({ user }) => {
         <div className="w-full md:w-auto flex justify-center">
           <UserCard
             user={{ firstName, lastName, photoUrl, age, gender, about }}
+            isProfile
           />
         </div>
       </div>
       {showToast && (
-        <div className="toast toast-top toast-center">
+        <div className="toast toast-top toast-center z-50">
           <div className="alert alert-info">
             <span>Profile Saved Successfully</span>
           </div>
