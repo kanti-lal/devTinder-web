@@ -42,7 +42,7 @@ const Premium = () => {
                   Silver Membership
                 </h2>
                 <div className="text-3xl font-bold text-gray-200 mb-1">
-                  $9.99
+                  ₹999
                   <span className="text-sm font-normal text-gray-400">
                     /month
                   </span>
@@ -142,7 +142,7 @@ const Premium = () => {
                   Gold Membership
                 </h2>
                 <div className="text-3xl font-bold text-gray-200 mb-1">
-                  $19.99
+                  ₹1999
                   <span className="text-sm font-normal text-gray-400">
                     /month
                   </span>
