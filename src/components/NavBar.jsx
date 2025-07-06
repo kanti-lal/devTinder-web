@@ -54,9 +54,9 @@ const NavBar = () => {
       <div className="flex-1">
         <Link to="/" className="btn btn-ghost text-xl font-bold tracking-wide">
           <span role="img" aria-label="logo">
-            👩‍💻
+            💻
           </span>{" "}
-          DevTinder
+          DevTinder (cashio)
         </Link>
       </div>
       {user && (
@@ -97,6 +97,45 @@ const NavBar = () => {
                   <Link to="/requests" onClick={() => handleDropdownSelect()}>
                     Requests
                   </Link>
+                </li>
+                <li>
+                  <details>
+                    <summary>Legal & Support</summary>
+                    <ul>
+                      <li>
+                        <Link
+                          to="/privacy-policy"
+                          onClick={() => handleDropdownSelect()}
+                        >
+                          Privacy Policy
+                        </Link>
+                      </li>
+                      <li>
+                        <Link
+                          to="/terms-and-conditions"
+                          onClick={() => handleDropdownSelect()}
+                        >
+                          Terms & Conditions
+                        </Link>
+                      </li>
+                      <li>
+                        <Link
+                          to="/cancellation-refund"
+                          onClick={() => handleDropdownSelect()}
+                        >
+                          Refund Policy
+                        </Link>
+                      </li>
+                      <li>
+                        <Link
+                          to="/contact-us"
+                          onClick={() => handleDropdownSelect()}
+                        >
+                          Contact Us
+                        </Link>
+                      </li>
+                    </ul>
+                  </details>
                 </li>
                 <li>
                   <a

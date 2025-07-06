@@ -1,12 +1,46 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const Footer = () => {
   return (
     <div>
-      <footer className="footer sm:footer-horizontal  bg-neutral text-neutral-content items-center p-4 fixed bottom-0">
+      <footer className="footer sm:footer-horizontal bg-neutral text-neutral-content items-center p-4 fixed bottom-0">
         <aside className="grid-flow-col items-center">
-          <p>Copyright © {new Date().getFullYear()} - All right reserved</p>
+          <p>
+            Copyright © {new Date().getFullYear()} Cashio.space - All right
+            reserved
+          </p>
         </aside>
+
+        {/* Legal Links */}
+        <nav className="grid-flow-col gap-4 md:place-self-center md:justify-self-end">
+          <Link
+            to="/privacy-policy"
+            className="hover:text-blue-300 transition-colors"
+          >
+            Privacy Policy
+          </Link>
+          <Link
+            to="/terms-and-conditions"
+            className="hover:text-blue-300 transition-colors"
+          >
+            Terms
+          </Link>
+          <Link
+            to="/cancellation-refund"
+            className="hover:text-blue-300 transition-colors"
+          >
+            Refund Policy
+          </Link>
+          <Link
+            to="/contact-us"
+            className="hover:text-blue-300 transition-colors"
+          >
+            Contact
+          </Link>
+        </nav>
+
+        {/* Social Media Links */}
         <nav className="grid-flow-col gap-4 md:place-self-center md:justify-self-end">
           <a>
             <svg

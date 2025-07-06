@@ -117,3 +117,14 @@ location /api/ {
     - Write code for SESClient
     - Write code for sending email address
     - Make the email dynamic by passing more params to the run application
+
+# Scheduling cron jobs in Nodejs
+    - Installing node-cron
+    - Learning about cron expressions syntax - crontab-guru schedule a job
+    - date-fns
+    - Find all the unique email Id who have got connection request in previous day
+    - Send email
+    - Explore queue mechanism to send bulk emails
+    - Amazon SES Bulk email
+    - Make sndEmail function dynamic
+    - bee-queue & bull npm package (queue mechanism)

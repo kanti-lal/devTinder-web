@@ -2,7 +2,7 @@ import axios from "axios";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { addUser } from "../utils/userSlice";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import { BASE_URL } from "../utils/constants";
 
 const Login = () => {
@@ -11,10 +11,14 @@ const Login = () => {
   const [lastName, setLastName] = useState("");
   const [password, setPassword] = useState("Kanti@123");
   const [error, setError] = useState("");
-  const [isLoginForm, setIsLoginForm] = useState(false);
+  const [isLoginForm, setIsLoginForm] = useState(true);
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const location = useLocation();
+
+  // Check if user was redirected from a protected route
+  const from = location.state?.from?.pathname || "/";
 
   const handleLogin = async () => {
     try {
@@ -29,7 +33,7 @@ const Login = () => {
         }
       );
       dispatch(addUser(res.data));
-      navigate("/");
+      navigate(from, { replace: true });
     } catch (error) {
       setError(error?.response?.data);
     }
@@ -57,12 +61,33 @@ const Login = () => {
   };
 
   return (
-    <div className="flex justify-center items-center h-full bg-gradient-to-br from-base-200 to-base-100">
+    <div className="flex justify-center items-center h-screen bg-gradient-to-br from-base-200 to-base-100">
       <div className="card card-bordered bg-neutral border border-base-200 shadow-2xl rounded-xl w-96 my-auto">
         <div className="card-body">
           <h2 className="card-title justify-center text-2xl font-bold mb-2 text-neutral-content">
             {isLoginForm ? "Login" : "Sign Up"}
           </h2>
+
+          {/* Show redirect message if user was redirected */}
+          {from !== "/" && (
+            <div className="alert alert-warning mb-4">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="stroke-current shrink-0 h-6 w-6"
+                fill="none"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L3.732 16.5c-.77.833.192 2.5 1.732 2.5z"
+                />
+              </svg>
+              <span>Please log in to access {from}</span>
+            </div>
+          )}
+
           {!isLoginForm && (
             <>
               <fieldset className="fieldset mb-2">
