@@ -128,6 +128,14 @@ const NavBar = () => {
                       </li>
                       <li>
                         <Link
+                          to="/shipping-delivery"
+                          onClick={() => handleDropdownSelect()}
+                        >
+                          Shipping & Delivery
+                        </Link>
+                      </li>
+                      <li>
+                        <Link
                           to="/contact-us"
                           onClick={() => handleDropdownSelect()}
                         >
