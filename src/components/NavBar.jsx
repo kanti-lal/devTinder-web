@@ -99,6 +99,11 @@ const NavBar = () => {
                   </Link>
                 </li>
                 <li>
+                  <Link to="/premium" onClick={() => handleDropdownSelect()}>
+                    Premium
+                  </Link>
+                </li>
+                <li>
                   <details>
                     <summary>Legal & Support</summary>
                     <ul>

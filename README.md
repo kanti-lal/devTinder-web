@@ -128,3 +128,6 @@ location /api/ {
     - Amazon SES Bulk email
     - Make sndEmail function dynamic
     - bee-queue & bull npm package (queue mechanism)
+
+# RazorPay payment gateway integration
+    - Sign up on Razorpay & complate kyc

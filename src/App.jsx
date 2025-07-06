@@ -11,6 +11,7 @@ import CancellationAndRefund from "./components/CancellationAndRefund";
 import ShippingAndDelivery from "./components/ShippingAndDelivery";
 import ContactUs from "./components/ContactUs";
 import AuthGuard from "./components/AuthGuard";
+import Premium from "./components/Premium";
 
 function App() {
   return (
@@ -55,6 +56,15 @@ function App() {
               element={
                 <AuthGuard>
                   <Requests />
+                </AuthGuard>
+              }
+            />
+
+            <Route
+              path="/premium"
+              element={
+                <AuthGuard>
+                  <Premium />
                 </AuthGuard>
               }
             />
