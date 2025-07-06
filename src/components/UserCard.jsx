@@ -94,7 +94,7 @@ const UserCard = ({ user, isProfile = false }) => {
   return (
     <>
       {/* Toast Notification */}
-      {!showToast && (
+      {showToast && (
         <div className={getToastClasses()}>
           <div className="flex items-center space-x-2 h-5">
             <span className="text-lg">
