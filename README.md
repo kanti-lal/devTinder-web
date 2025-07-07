@@ -131,3 +131,13 @@ location /api/ {
 
 # RazorPay payment gateway integration
     - Sign up on Razorpay & complate kyc
+    - Created a UI for premium page
+    - Creating an API for create order in backend
+    - added my key and secret in env file
+    - Initialized Razorpay in utils
+    - creating order on Razorpay
+    - Create schema and model
+    - Saved the order in payments collection
+    - make the api dynamic
+    - Document Ref - https://razorpay.com/docs/payments/server-integration/nodejs/integration-steps/#integrate-with-other-razorpay-products
+    - Ref - 

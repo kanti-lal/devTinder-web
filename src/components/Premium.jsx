@@ -1,10 +1,38 @@
 import React from "react";
+import { BASE_URL } from "../utils/constants";
+import axios from "axios";
 
 const Premium = () => {
-  const handleBuyPlan = (plan) => {
-    // Handle plan purchase logic here
-    console.log(`Buying ${plan} plan`);
-    // You can integrate with payment gateway here
+  const handleBuyPlan = async (plan) => {
+    const order = await axios.post(
+      BASE_URL + "/payment/create",
+      {
+        membershipType: plan,
+      },
+      { withCredentials: true }
+    );
+
+    const { amount, keyId, currency, notes, orderId } = order.data;
+
+    const options = {
+      key: keyId,
+      amount,
+      currency,
+      name: "DevTinder (Cashio)",
+      description: "Connect to other developers",
+      order_id: orderId,
+      prefill: {
+        name: notes.firstName + "" + notes.lastName,
+        email: notes.emailId,
+        contact: "9999999999",
+      },
+      theme: {
+        color: "#F37254",
+      },
+    };
+
+    const rzp = new window.Razorpay(options);
+    rzp.open();
   };
 
   return (
