@@ -15,10 +15,8 @@ const Login = () => {
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const location = useLocation();
 
   // Check if user was redirected from a protected route
-  const from = location.state?.from?.pathname || "/";
 
   const handleLogin = async () => {
     try {
@@ -68,26 +66,6 @@ const Login = () => {
             {isLoginForm ? "Login" : "Sign Up"}
           </h2>
 
-          {/* Show redirect message if user was redirected */}
-          {from !== "/" && (
-            <div className="alert alert-warning mb-4">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="stroke-current shrink-0 h-6 w-6"
-                fill="none"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L3.732 16.5c-.77.833.192 2.5 1.732 2.5z"
-                />
-              </svg>
-              <span>Please log in to access {from}</span>
-            </div>
-          )}
-
           {!isLoginForm && (
             <>
               <fieldset className="fieldset mb-2">
@@ -133,11 +111,11 @@ const Login = () => {
             />
           </fieldset>
           <div>
-            <p className="text-xs text-red-500 min-h-[1.5em]">{error}</p>
+            <p className="text-xs text-red-500">{error}</p>
           </div>
-          <div className="card-actions flex justify-center mt-2">
+          <div className="card-actions flex justify-center">
             <button
-              className="btn btn-primary px-6 my-5 w-full"
+              className="btn btn-primary px-6 w-full"
               onClick={isLoginForm ? handleLogin : handleSignup}
             >
               {isLoginForm ? "Login" : "Signup"}
