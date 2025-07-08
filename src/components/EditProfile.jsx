@@ -106,11 +106,11 @@ const EditProfile = ({ user }) => {
                 />
               </fieldset>
               <div>
-                <p className="text-xs text-red-500 min-h-[1.5em]">{error}</p>
+                <p className="text-xs text-red-500 mt-2">{error}</p>
               </div>
-              <div className="card-actions flex justify-center mt-2">
+              <div className="card-actions flex justify-center">
                 <button
-                  className="btn btn-primary px-6 my-4 w-full"
+                  className="btn btn-primary px-6 w-full"
                   onClick={saveProfile}
                 >
                   Save Profile
