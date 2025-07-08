@@ -1,8 +1,19 @@
-import React from "react";
+import React, { useState } from "react";
 import { BASE_URL } from "../utils/constants";
 import axios from "axios";
 
 const Premium = () => {
+  const [isUserPremium, setIsUserPremium] = useState(false);
+
+  const verifyPremiumUser = async () => {
+    const res = await axios.get(BASE_URL + "/premium/verify", {
+      withCredentials: true,
+    });
+
+    if (res.data.isPremium) {
+      setIsUserPremium(true);
+    }
+  };
   const handleBuyPlan = async (plan) => {
     const order = await axios.post(
       BASE_URL + "/payment/create",
@@ -29,13 +40,63 @@ const Premium = () => {
       theme: {
         color: "#F37254",
       },
+      handler: verifyPremiumUser,
     };
 
     const rzp = new window.Razorpay(options);
     rzp.open();
   };
 
-  return (
+  return isUserPremium ? (
+    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-slate-900 via-blue-900 to-purple-900 px-4 py-8">
+      <div className="bg-gray-900/80 rounded-2xl shadow-2xl p-8 max-w-md w-full text-center border border-purple-700 relative overflow-hidden">
+        {/* Decorative SVG */}
+        <svg
+          className="mx-auto mb-4"
+          width="80"
+          height="80"
+          viewBox="0 0 80 80"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <circle
+            cx="40"
+            cy="40"
+            r="38"
+            stroke="#a78bfa"
+            strokeWidth="4"
+            fill="#f3e8ff"
+          />
+          <path d="M40 20L48 36H32L40 20Z" fill="#a78bfa" />
+          <ellipse
+            cx="40"
+            cy="52"
+            rx="16"
+            ry="8"
+            fill="#a78bfa"
+            fillOpacity="0.2"
+          />
+          <circle cx="40" cy="36" r="6" fill="#a78bfa" />
+        </svg>
+        <h2 className="text-2xl font-bold text-purple-200 mb-2">
+          You are already a premium user
+        </h2>
+        <p className="text-gray-300 mb-4">
+          Thank you for supporting DevTinder! You have access to all premium
+          features, including unlimited connections, priority support, and
+          exclusive tools. Enjoy your enhanced experience!
+        </p>
+        <div className="flex justify-center gap-2 mt-6">
+          <span className="inline-block bg-purple-700/80 text-white text-xs px-3 py-1 rounded-full">
+            Premium Active
+          </span>
+          <span className="inline-block bg-gradient-to-r from-yellow-400 via-pink-500 to-purple-500 text-white text-xs px-3 py-1 rounded-full animate-pulse">
+            ✨ Enjoy the perks!
+          </span>
+        </div>
+      </div>
+    </div>
+  ) : (
     <div className="min-h-screen bg-gradient-to-br from-slate-900 via-blue-900 to-purple-900 py-8 px-4 relative overflow-hidden">
       {/* Background Pattern */}
       <div className="absolute inset-0 opacity-10">
