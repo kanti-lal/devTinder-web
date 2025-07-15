@@ -16,8 +16,6 @@ const Login = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  // Check if user was redirected from a protected route
-
   const handleLogin = async () => {
     try {
       const res = await axios.post(
@@ -66,61 +64,65 @@ const Login = () => {
             {isLoginForm ? "Login" : "Sign Up"}
           </h2>
 
-          {!isLoginForm && (
-            <>
-              <fieldset className="fieldset mb-2">
-                <legend className="fieldset-legend">First Name</legend>
-                <input
-                  value={firstName}
-                  type="text"
-                  className="input input-bordered input-primary w-full"
-                  placeholder="Enter first name"
-                  onChange={(e) => setFirstName(e.target.value)}
-                />
-              </fieldset>
-              <fieldset className="fieldset mb-2">
-                <legend className="fieldset-legend">Last Name</legend>
-                <input
-                  value={lastName}
-                  type="text"
-                  className="input input-bordered input-primary w-full"
-                  placeholder="Enter last name"
-                  onChange={(e) => setLastName(e.target.value)}
-                />
-              </fieldset>
-            </>
-          )}
-          <fieldset className="fieldset mb-2">
-            <legend className="fieldset-legend">Email ID</legend>
-            <input
-              value={emailId}
-              type="text"
-              className="input input-bordered input-primary w-full"
-              placeholder="enter email address"
-              onChange={(e) => setEmailId(e.target.value)}
-            />
-          </fieldset>
-          <fieldset className="fieldset mb-2">
-            <legend className="fieldset-legend">Password</legend>
-            <input
-              value={password}
-              type="password"
-              className="input input-bordered input-primary w-full"
-              placeholder="enter password"
-              onChange={(e) => setPassword(e.target.value)}
-            />
-          </fieldset>
-          <div>
-            <p className="text-xs text-red-500">{error}</p>
-          </div>
-          <div className="card-actions flex justify-center">
-            <button
-              className="btn btn-primary px-6 w-full"
-              onClick={isLoginForm ? handleLogin : handleSignup}
-            >
-              {isLoginForm ? "Login" : "Signup"}
-            </button>
-          </div>
+          <form
+            onSubmit={(e) => {
+              e.preventDefault();
+              isLoginForm ? handleLogin() : handleSignup();
+            }}
+          >
+            {!isLoginForm && (
+              <>
+                <fieldset className="fieldset mb-2">
+                  <legend className="fieldset-legend">First Name</legend>
+                  <input
+                    value={firstName}
+                    type="text"
+                    className="input input-bordered input-primary w-full"
+                    placeholder="Enter first name"
+                    onChange={(e) => setFirstName(e.target.value)}
+                  />
+                </fieldset>
+                <fieldset className="fieldset mb-2">
+                  <legend className="fieldset-legend">Last Name</legend>
+                  <input
+                    value={lastName}
+                    type="text"
+                    className="input input-bordered input-primary w-full"
+                    placeholder="Enter last name"
+                    onChange={(e) => setLastName(e.target.value)}
+                  />
+                </fieldset>
+              </>
+            )}
+            <fieldset className="fieldset mb-2">
+              <legend className="fieldset-legend">Email ID</legend>
+              <input
+                value={emailId}
+                type="text"
+                className="input input-bordered input-primary w-full"
+                placeholder="enter email address"
+                onChange={(e) => setEmailId(e.target.value)}
+              />
+            </fieldset>
+            <fieldset className="fieldset mb-2">
+              <legend className="fieldset-legend">Password</legend>
+              <input
+                value={password}
+                type="password"
+                className="input input-bordered input-primary w-full"
+                placeholder="enter password"
+                onChange={(e) => setPassword(e.target.value)}
+              />
+            </fieldset>
+            <div>
+              <p className="text-xs text-red-500">{error}</p>
+            </div>
+            <div className="card-actions flex justify-center">
+              <button type="submit" className="btn btn-primary px-6 w-full">
+                {isLoginForm ? "Login" : "Signup"}
+              </button>
+            </div>
+          </form>
           <p
             className="text-primary cursor-pointer text-center py-2 hover:underline select-none"
             onClick={() => setIsLoginForm((value) => !value)}

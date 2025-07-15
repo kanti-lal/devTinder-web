@@ -24,7 +24,7 @@ const NavBar = () => {
       );
       dispatch(removeUser());
       dispatch(removeFeed());
-      navigate("/login");
+      // navigate("/login");
     } catch (error) {
       console.error(error);
     }
@@ -151,13 +151,15 @@ const NavBar = () => {
                   </details>
                 </li>
                 <li>
-                  <a
+                  <button
+                    type="button"
+                    className="w-full text-left"
                     onClick={() => {
                       handleDropdownSelect(handleLogout);
                     }}
                   >
                     Logout
-                  </a>
+                  </button>
                 </li>
               </ul>
             )}
