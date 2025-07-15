@@ -28,7 +28,7 @@ const Feed = () => {
 
   if (feed?.length === 0) {
     return (
-      <div className="flex flex-col items-center justify-center min-h-[60vh] px-4">
+      <div className="flex flex-col items-center justify-center min-h-[60vh] overflow-y-auto px-4 py-10">
         <div className="text-center">
           {/* Animated Icon */}
           <div className="mb-6">

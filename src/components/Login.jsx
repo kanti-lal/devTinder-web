@@ -96,7 +96,7 @@ const Login = () => {
               value={emailId}
               type="text"
               className="input input-bordered input-primary w-full"
-              placeholder="enter emailId id"
+              placeholder="enter email address"
               onChange={(e) => setEmailId(e.target.value)}
             />
           </fieldset>

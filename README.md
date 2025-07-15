@@ -140,4 +140,22 @@ location /api/ {
     - Saved the order in payments collection
     - make the api dynamic
     - Document Ref - https://razorpay.com/docs/payments/server-integration/nodejs/integration-steps/#integrate-with-other-razorpay-products
-    - Ref - 
+    - Ref -
+
+
+# Real time chat using Websocket(Socket .io)
+    - Build the UI for chat window on /chat/:targetUserId
+    - Setup socket.io in backend
+    - npm i socket.io
+    - setup frontend socket.io-client
+    - Initialise the chat
+    - createSocketConnection
+    - Lister to events
+    - Homework, improve the UI
+    - Homework: Fix Security Bug - Can i send message to a person who is not my friend
+    - Homework: Fix bug - If i am not friend, then i should not be able to send message
+    - Homework: feat: show green symbol when online ?? - [lastSeen 2 hours ago]
+    - Homework: Limit messages when fetching from DB (infinite scroll)
+    - Project Idea - 1 - Tic tac toe game
+    - Project Idea -2 : Cheese game
+    - 

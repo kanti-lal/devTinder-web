@@ -3,6 +3,7 @@ import { BASE_URL } from "../utils/constants";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { addConnections } from "../utils/connectionSlice";
+import { Link } from "react-router-dom";
 
 const Connections = () => {
   const dispatch = useDispatch();
@@ -39,24 +40,31 @@ const Connections = () => {
         return (
           <div
             key={_id}
-            className="flex border bg-base-200 border-base-300 shadow-sm rounded-lg m-3 p-4 w-1/2 mx-auto"
+            className="flex border bg-base-200 border-base-300 shadow-sm rounded-lg m-3 p-4 w-1/2 mx-auto justify-between items-center"
           >
-            <div className="min-w-20 min-h-20">
-              <img
-                src={photoUrl}
-                className=" w-20 h-20 rounded-full"
-                alt="photo"
-              />
-            </div>
-            <div className="px-4">
-              <div className="">
-                <h1 className="flex font-bold text-xl capitalize">
-                  {firstName + " " + lastName}
-                </h1>
-                {age && gender && <p className="my-1">{age + ", " + gender}</p>}
-                {about && <div>{about}</div>}
+            <div className="flex items-center">
+              <div className="min-w-20 min-h-20">
+                <img
+                  src={photoUrl}
+                  className=" w-20 h-20 rounded-full"
+                  alt="photo"
+                />
+              </div>
+              <div className="px-4">
+                <div className="">
+                  <h1 className="flex font-bold text-xl capitalize">
+                    {firstName + " " + lastName}
+                  </h1>
+                  {age && gender && (
+                    <p className="my-1">{age + ", " + gender}</p>
+                  )}
+                  {about && <div>{about}</div>}
+                </div>
               </div>
             </div>
+            <Link to={"/chat/" + _id}>
+              <button className="btn-primary btn h-8">Chat</button>
+            </Link>
           </div>
         );
       })}

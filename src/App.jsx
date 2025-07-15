@@ -12,6 +12,7 @@ import ShippingAndDelivery from "./components/ShippingAndDelivery";
 import ContactUs from "./components/ContactUs";
 import AuthGuard from "./components/AuthGuard";
 import Premium from "./components/Premium";
+import Chat from "./components/Chat";
 
 function App() {
   return (
@@ -82,6 +83,7 @@ function App() {
               element={<ShippingAndDelivery />}
             />
             <Route path="/contact-us" element={<ContactUs />} />
+            <Route path="/chat/:targetUserId" element={<Chat />} />
           </Route>
         </Routes>
       </BrowserRouter>
